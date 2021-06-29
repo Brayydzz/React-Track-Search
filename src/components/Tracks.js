@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react"
 import Card from './Card'
 import Button from './Button'
 
-const Tracks = () => {
+const Tracks = ({addToPlaylist}) => {
     const [tracks, setTracks] = useState([])
     const [search, setSearch] = useState('')
 
     useEffect(() => {
-        console.log(tracks)
+        
     }, [tracks])
 
     const getTracks = async () => {
@@ -27,9 +27,10 @@ const Tracks = () => {
         getTracks()
     }
 
+
     return (
         <div className='track-container'>
-            <form  onSubmit={btnGetTracks}>
+            <form  className='form' onSubmit={btnGetTracks}>
                 <input type="text" onChange={(e) => {
                     setSearch(e.target.value)}}/>
                 <Button func={btnGetTracks} label="Get Tracks!" />
@@ -37,7 +38,7 @@ const Tracks = () => {
             
             {tracks.length > 0 ?
             <div className='track-list'>
-                {tracks.map((track) => (<Card key={track.track.key} track={track.track}></Card>))}
+                {tracks.map((track) => (<Card addToPlaylist={addToPlaylist} key={track.track.key} track={track.track}></Card>))}
             </div> 
             :
             <p>No tracks loaded</p>
