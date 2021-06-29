@@ -1,11 +1,10 @@
 import Card from './Card'
 
-const Playlist = ({playlist}) => {
+const Playlist = ({playlist, removeFromPlaylist}) => {
     return (
         <div className='playlist'>
             {playlist.map((track) => (
-                // track.key
-                <Card func={removeFromPlaylist} track={track}/>
+                <Card key={track.key} removeFromPlaylist={removeFromPlaylist} track={track}/>
             ))}
         </div>
     )

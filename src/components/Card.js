@@ -1,15 +1,10 @@
-import Button from "./Button"
-
-
-
-
-const Card = ({track, func}) => {
+const Card = ({track, addToPlaylist, isPlaylist, removeFromPlaylist}) => {
     return (
         <div className='card-container'>
             <p>{track.title}</p>
             <img className='cover-art' src={track.images.coverart} alt="" />
-            <button onClick={event => func(event, track)}>Add</button>
-            {/* <Button func={addToPlaylist}label='Add'/> */}
+            {isPlaylist ? <button onClick={event => addToPlaylist(event, track)}>Add</button> : <button onClick={event => removeFromPlaylist(event, track)}>Remove</button>}
+            
         </div>
         
     )

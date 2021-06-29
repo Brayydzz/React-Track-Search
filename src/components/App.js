@@ -16,8 +16,7 @@ function App() {
 
   const removeFromPlaylist = (e, track) => {
     e.preventDefault()
-    const copyData = playlist.slice()
-    copyData.filter(element => track.key != element.key)
+    const copyData = playlist.filter(element => element !== track )
     setPlaylist(copyData)
   }
 
@@ -26,7 +25,7 @@ function App() {
       <h1>Track Search</h1>
       <div className='grid-container'>
         <Tracks addToPlaylist={addToPlaylist} />
-        <Playlist remove={removeFromPlaylist} playlist={playlist} />
+        <Playlist removeFromPlaylist={removeFromPlaylist} playlist={playlist} />
       </div>
     </>
   );
